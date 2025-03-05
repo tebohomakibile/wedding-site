@@ -1,0 +1,125 @@
+h1, h2, h3 {
+    margin: 0;
+    text-align: center;
+  }
+
+  .mea-culpa-regular {
+    font-family: "Mea Culpa", cursive;
+    font-weight: 300;
+    font-style: normal;
+    font-size: 62px;
+  }
+
+  .jost-header {
+    font-family: "Jost", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 52px;
+  }
+
+  .wrapper {
+    padding: 30px;
+    margin: auto;
+    max-width: 1269px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .rsvp-container {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    text-align: center;
+    margin-top: 20px; 
+    max-width: 600px; 
+    font-family: 'Jost', sans-serif; font-size: 18px;
+
+    button {
+        margin-top: 15px; 
+        padding: 10px 20px; 
+        background-color: #000; 
+        color: white; 
+        border: none; 
+        border-radius: 5px; 
+        cursor: pointer;
+    }
+  }
+
+  .search-input {
+    position: relative; 
+    width: 100%; 
+    max-width: 400px; 
+    margin: 10px 0;
+
+    input {
+        padding: 10px 10px 10px 35px; 
+        width: 100%; 
+        border: 1px solid #ccc; 
+        border-radius: 5px;
+    }
+
+    img {
+        position: absolute; 
+        left: 10px; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        width: 16px; 
+        height: 16px; 
+        opacity: 0.6;
+    }
+  }
+
+  .important-notice {
+    display: flex; 
+    align-items: center; 
+    gap: 5px; 
+    font-size: 14px; 
+    color: #555;
+  }
+
+  .info {
+    margin-top: 20px; 
+    line-height: 1.5;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .mea-culpa-regular {
+      font-size: 48px; 
+    }
+
+    .jost-header {
+      font-size: 32px;
+    }
+
+    .wrapper {
+      padding: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mea-culpa-regular {
+      font-size: 36px;
+    }
+
+    .jost-header {
+      font-size: 24px;
+    }
+  }
