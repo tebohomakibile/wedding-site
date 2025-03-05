@@ -22,29 +22,22 @@
     <button (click)="searchInvitation()">FIND YOUR INVITATION</button>
 
     @if (searchResults.length > 0) {
-      <div style="margin-top: 20px; text-align: left;">
-        <h3>Search Results:</h3>
-        <ul>
-          @for (invite of searchResults; track invite.id) {
-            <li>
-              <strong>{{ invite.firstName }} {{ invite.lastName }}</strong> - 
-              Response: <em>{{ invite.response || 'Pending' }}</em>
-              @if (invite.responseDate) {
-                <span> (on {{ invite.responseDate }})</span>
-              }
-              <br>
-              <button (click)="respondToInvitation(invite, 'Accepted')" 
-                      [disabled]="invite.response === 'Accepted'">
-                Accept
-              </button>
+      <div class="container">
+        @for (invite of searchResults; track invite.id){
+          
+            <p class="text">{{ invite.firstName }} {{ invite.lastName }}</p>
+            <button 
+              class="accept" 
+              (click)="respondToInvitation(invite, 'Accepted')" 
+              [disabled]="invite.response === 'Accepted'">
+              Accept</button>
 
-              <button (click)="respondToInvitation(invite, 'Declined')" 
-                      [disabled]="invite.response === 'Declined'">
-                Decline
-              </button>
-            </li>
-          }
-        </ul>
+            <button 
+              class="decline"
+              (click)="respondToInvitation(invite, 'Declined')" 
+              [disabled]="invite.response === 'Declined'">
+              Decline</button>
+        }
       </div>
     }
 
