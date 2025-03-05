@@ -1,38 +1,67 @@
 <div class="wrapper">
-    <div class="header">
-      <img src="header.svg" alt="Traditional Wedding Header" />
-      <h2 class="mea-culpa-regular">Traditional Wedding</h2>
-      <h3 class="jost-header">OF MAVA & NCEDISA</h3>
-      <img src="main.svg" alt="Traditional Wedding Main" />
-    </div>
-  
-    <div class="rsvp-container">
-        <p>Please enter your name (and that of family members) below to find your invitation to RSVP.</p>
-        
-        <div class="search-input">
-          <img src="search.svg" alt="Search">
-          <input type="text" placeholder="Search your name and surname to RSVP">
-        </div>
-        
-        <span class="important-notice">
-          <img src="info.svg" alt="Info" style="width: 16px; height: 16px;">
-          Strictly by invitation
-        </span>
-    
-        <button>
-          FIND YOUR INVITATION
-        </button>
-        
-        <p class="info">
-          For emergencies and special dietary requirements:<br>
-          Ncumisa Xolo: 071 670 8727<br>
-          Eddie Xolo: 081 424 6409<br>
-          Email: MavaWedsNcedisa&#64;gmail.com<br>
-          Nearest school: Lugada Junior Secondary School.
-        </p>
-      </div>
-  
-    <img src="initials.svg" alt="Initials Image" />
-    <img src="footer.svg" alt="Footer Image" class="footer-image" />
+  <div class="header">
+    <img src="header.svg" alt="Traditional Wedding Header" />
+    <h2 class="mea-culpa-regular">Traditional Wedding</h2>
+    <h3 class="jost-header">OF MAVA & NCEDISA</h3>
+    <img src="main.svg" alt="Traditional Wedding Main" />
   </div>
-  
+
+  <div class="rsvp-container">
+    <p>Please enter your name (and that of family members) below to find your invitation to RSVP.</p>
+
+    <div class="search-input">
+      <img src="search.svg" alt="Search">
+      <input [(ngModel)]="searchQuery" type="text" placeholder="Search your name and surname to RSVP">
+    </div>
+
+    <span class="important-notice">
+      <img src="info.svg" alt="Info" style="width: 16px; height: 16px;">
+      Strictly by invitation
+    </span>
+
+    <button (click)="searchInvitation()">FIND YOUR INVITATION</button>
+
+    @if (searchResults.length > 0) {
+      <div style="margin-top: 20px; text-align: left;">
+        <h3>Search Results:</h3>
+        <ul>
+          @for (invite of searchResults; track invite.id) {
+            <li>
+              <strong>{{ invite.firstName }} {{ invite.lastName }}</strong> - 
+              Response: <em>{{ invite.response || 'Pending' }}</em>
+              @if (invite.responseDate) {
+                <span> (on {{ invite.responseDate }})</span>
+              }
+              <br>
+              <button (click)="respondToInvitation(invite, 'Accepted')" 
+                      [disabled]="invite.response === 'Accepted'">
+                Accept
+              </button>
+
+              <button (click)="respondToInvitation(invite, 'Declined')" 
+                      [disabled]="invite.response === 'Declined'">
+                Decline
+              </button>
+            </li>
+          }
+        </ul>
+      </div>
+    }
+
+   
+    @if (searchQuery && searchResults.length === 0) {
+      <p>No invitation found.</p>
+    }
+
+    <p class="info">
+      For emergencies and special dietary requirements:<br>
+      Ncumisa Xolo: 071 670 8727<br>
+      Eddie Xolo: 081 424 6409<br>
+      Email: MavaWedsNcedisa&#64;gmail.com<br>
+      Nearest school: Lugada Junior Secondary School.
+    </p>
+  </div>
+
+  <img src="initials.svg" alt="Initials Image" />
+  <img src="footer.svg" alt="Footer Image" class="footer-image" />
+</div>
